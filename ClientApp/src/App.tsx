@@ -1,14 +1,9 @@
 ﻿import * as React from 'react';
-import { Container, Navbar, DropdownToggle, DropdownMenu, DropdownItem, Dropdown, Button, UncontrolledDropdown } from 'reactstrap';
-
+import { Container, Navbar, DropdownToggle, DropdownMenu, DropdownItem, Button, UncontrolledDropdown } from 'reactstrap';
 import './custom.css'
 
-export default class App extends React.PureComponent<{ children?: React.ReactNode }> {
-  //constructor(props: { children?: React.ReactNode }) {
-  //  super(props)
-  //}
-  render() {
-    return (
+const App = (props: { children?: React.ReactNode }) => {
+  return (
       <React.Fragment>
         <header>
           <Navbar className="navbar-expand navbar-toggleable border-bottom box-shadow mb-3" light>
@@ -28,17 +23,18 @@ export default class App extends React.PureComponent<{ children?: React.ReactNod
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Container>
-            <Container fluid className="justify-content-end">
-              <div className="mr-2">Иванов</div>
-              <Button color="primary" className="mr-1" outline onClick={() => alert('1')}>Регистрация</Button>
-              <Button color="primary" outline onClick={() => alert('2')}>Вход</Button>
-            </Container>
+            //<Container fluid className="justify-content-end">
+            //  <div className="mr-2">Иванов</div>
+            //  <Button color="primary" className="mr-1" outline onClick={() => alert('1')}>Регистрация</Button>
+            //  <Button color="primary" outline onClick={() => alert('2')}>Вход</Button>
+            //</Container>
           </Navbar>
         </header>
         <Container className="mx-0">
-          {this.props.children}
+          {props.children}
         </Container>
       </React.Fragment>
     )
-  }
 }
+
+export default App;
