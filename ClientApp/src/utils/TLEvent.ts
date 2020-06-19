@@ -6,12 +6,12 @@ export enum EnumPeriod {
 
 export abstract class TLEvent {
   Name: string
-  Day: number
-  Month: number
-  Year: number
-  Decade: number
-  Century: number
-  Type: EnumPeriod
+  Day: number | null
+  Month: number | null
+  Year: number | null
+  Decade: number | null
+  Century: number | null
+  Type: EnumPeriod = EnumPeriod.day
   constructor(name: string) {
     this.Name = name
     this.Day = null
@@ -48,6 +48,7 @@ export abstract class TLEvent {
     if (o.Year !== null) return EnumPeriod.year
     if (o.Decade !== null) return EnumPeriod.decade
     if (o.Century !== null) return EnumPeriod.century
+    throw Error()
   }
   /**
    * Попадает ли событие this в текущее значение ОВ
@@ -71,19 +72,34 @@ export abstract class TLEvent {
     let rt: string
     switch (this.Type) {
       case EnumPeriod.day:
-        rt = DateUtils.formatDay(this.Day)
+        if (this.Day)
+          rt = DateUtils.formatDay(this.Day)
+        else
+          throw Error()
         break;
       case EnumPeriod.month:
-        rt = DateUtils.formatMonth(this.Month)
+        if (this.Month)
+          rt = DateUtils.formatMonth(this.Month)
+        else
+          throw Error()
         break;
       case EnumPeriod.year:
-        rt = DateUtils.formatYear(this.Year)
+        if (this.Year)
+          rt = DateUtils.formatYear(this.Year)
+        else
+          throw Error()
         break;
       case EnumPeriod.decade:
-        rt = DateUtils.formatDecade(this.Decade)
+        if (this.Decade)
+          rt = DateUtils.formatDecade(this.Decade)
+        else
+          throw Error()
         break;
       case EnumPeriod.century:
-        rt = DateUtils.formatCentury(this.Century)
+        if (this.Century)
+          rt = DateUtils.formatCentury(this.Century)
+        else
+          throw Error()
         break;
     }
     return rt

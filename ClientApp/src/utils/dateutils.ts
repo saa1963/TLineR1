@@ -21,23 +21,23 @@ export class TLeapData {
       this.isLeap = true
       this.daysInYear = 366
       this.daysInFeb = 29
-      this.dth = [].concat(TLeapData.dth_leap)
-      this.dthReverse = [].concat(TLeapData.dth_leap).reverse()
+      this.dth = TLeapData.dth_leap.slice(0)
+      this.dthReverse = TLeapData.dth_leap.slice(0).reverse()
     } else {
       this.isLeap = false
       this.daysInYear = 365
       this.daysInFeb = 28
-      this.dth = [].concat(TLeapData.dth)
-      this.dthReverse = [].concat(TLeapData.dth).reverse()
+      this.dth = TLeapData.dth.slice(0)
+      this.dthReverse = TLeapData.dth.slice(0).reverse()
     }
   }
-  static getDaysInYear(year): number {
+  static getDaysInYear(year: number): number {
     if (TLeapData.leapYear(year))
       return 366
     else
       return 365
   }
-  static leapYear(year) {
+  static leapYear(year: number) {
     return ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
   }
 }
@@ -64,7 +64,7 @@ export class DateUtils {
     let d = 0
     let yr: number
     const absDays = Math.abs(days)
-    if (days === 0) return null
+    if (days === 0) return {year:0, month:0, day:0}
     const delta: number = yr = days / absDays
 
     do {

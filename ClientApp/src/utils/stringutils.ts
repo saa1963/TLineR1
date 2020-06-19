@@ -1,6 +1,6 @@
 export let stringUtils = (function () {
   return {
-    pad: function (num, size) {
+    pad: function (num: string, size: number) {
       let s = num + ''
       while (s.length < size) s = '0' + s
       return s
