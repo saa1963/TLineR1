@@ -1,16 +1,18 @@
 ﻿import { DateUtils } from './dateutils';
 
+type NullableNumber = number | null
+
 export enum EnumPeriod {
   day = 1, month = 2, year = 3, decade = 4, century = 5
 }
 
 export abstract class TLEvent {
   Name: string
-  Day: number | null
-  Month: number | null
-  Year: number | null
-  Decade: number | null
-  Century: number | null
+  Day: NullableNumber
+  Month: NullableNumber
+  Year: NullableNumber
+  Decade: NullableNumber
+  Century: NullableNumber
   Type: EnumPeriod = EnumPeriod.day
   constructor(name: string) {
     this.Name = name
