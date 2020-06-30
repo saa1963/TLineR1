@@ -6,6 +6,13 @@ export enum EnumPeriod {
 
 // state
 
+export interface ITPeriod {
+  indexOfTL: number
+  period: TLPeriod
+  il: number
+  ir: number
+}
+
 export interface TLEvent {
   name: string
   day: NullableNumber
@@ -32,6 +39,17 @@ export interface TimeLines {
   timelines: TLPeriod[]
 }
 
-// actions
 
-interface 
+export const tlPeriod = (function () {
+
+  return {
+    create: (period) => {
+      return {
+        id: Math.floor(Math.random() * Math.floor(1000000000)),
+        name: period.name,
+        begin: 
+      }
+    }
+  }
+
+})();

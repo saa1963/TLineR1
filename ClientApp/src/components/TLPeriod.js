@@ -1,29 +1,16 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
+var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 require("./tlperiod.css");
-var TPeriod = /** @class */ (function (_super) {
-    __extends(TPeriod, _super);
-    function TPeriod() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    TPeriod.prototype.react = function () {
-        return (React.createElement("td", { draggable: true, className: "period_cell", id: 'cell-' + this.props.indexOfTL + '-' + this.props.id }));
-    };
-    return TPeriod;
-}(React.PureComponent));
-exports.TPeriod = TPeriod;
+var TPeriod = function (props) {
+    return (React.createElement("td", { draggable: true, className: 'period_cell' + props.period.periods.length ? ' note' : '', id: 'cell-' + props.indexOfTL + '-' + _this.props.id, colSpan: props.ir - props.il + 1, onDragStart: function (ev) {
+            ev.dataTransfer.setData('application/json', JSON.stringify(props.period));
+            ev.dataTransfer.dropEffect = 'copy';
+        }, onDragEnter: function (ev) {
+            ev.preventDefault();
+            ev.target.classList.add('period_cell_drop');
+        }, onDragLeave: function (ev) { return ev.target.classList.remove('period_cell_drop'); }, onDragOver: function (ev) { return ev.preventDefault(); } }));
+};
+exports.default = TPeriod;
 //# sourceMappingURL=TLPeriod.js.map
