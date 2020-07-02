@@ -1,4 +1,6 @@
-﻿type NullableNumber = number | null
+﻿import { TLEvent } from "../utils/TLEvent";
+
+type NullableNumber = number | null
 
 export enum EnumPeriod {
   day = 1, month = 2, year = 3, decade = 4, century = 5
@@ -43,11 +45,27 @@ export interface TimeLines {
 export const tlPeriod = (function () {
 
   return {
-    create: (period) => {
+    create: (period: {name: string, begin: TLEvent, end: TLEvent, periods: TLPeriod[]}) => {
       return {
         id: Math.floor(Math.random() * Math.floor(1000000000)),
         name: period.name,
-        begin: 
+        begin: TLEvent.Create(
+          period.begin.Name,
+          period.begin.Century,
+          period.begin.Decade,
+          period.begin.Year,
+          period.begin.Month,
+          period.begin.Day
+        ),
+        end: TLEvent.Create(
+          period.end.Name,
+          period.end.Century,
+          period.end.Decade,
+          period.end.Year,
+          period.end.Month,
+          period.end.Day
+        ),
+        beginDay:
       }
     }
   }
