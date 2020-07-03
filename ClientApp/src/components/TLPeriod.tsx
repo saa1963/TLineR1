@@ -5,6 +5,7 @@ import './tlperiod.css'
 
 
 const TPeriod = (props: ITPeriod) => {
+  const [period, setPeriod] = React.useState(props)
   return (
     <td
       draggable={true}
@@ -23,7 +24,7 @@ const TPeriod = (props: ITPeriod) => {
       onDragOver={(ev) => ev.preventDefault()}
       onDrop={(ev) => {
         const data = ev.dataTransfer.getData('application/json')
-        const tl = TLPeriod.CreateTLPeriod(JSON.parse(data))
+        const tl = JSON.parse(data)
         period.Add(tl)
         event.preventDefault();
       }}
